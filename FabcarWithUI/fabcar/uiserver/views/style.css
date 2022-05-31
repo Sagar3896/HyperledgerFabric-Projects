@@ -1,0 +1,10 @@
+.txtbox {
+  border-radius: 25px;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+
+table, td {
+  border: 1px solid black;
+}

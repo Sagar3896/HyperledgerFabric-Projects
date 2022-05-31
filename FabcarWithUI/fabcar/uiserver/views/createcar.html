@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FABCAR</title>
+
+    <style>
+
+
+        .txtbox {
+            border-radius: 25px;
+            padding: 20px;
+            width: 200px;
+            height: 10px;
+        }
+
+        .bg {
+            background-color: rgb(244, 240, 255);
+        }
+    </style>
+
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+
+</script>
+
+</head>
+
+<body class="bg">
+    <center>
+        <h1>Hey <%= username%>, Use below form to create car record..... !!</h1>
+        <!-- <a href="/api/queryallcars"> View All Cars</a> -->
+        <h2>
+            <a href="/home">Go to Home</a>
+            <br><br>
+            <a href="/logout"> Logout</a>
+        </h2>
+        <br><br>
+        <form method='POST' action='/api/addcar'>
+
+            <input type="text" placeholder="Car ID" name="carid" class="txtbox">
+            <br><br>
+            <input type="text" placeholder="Make" name="make" class="txtbox"><br><br>
+            <input type="text" placeholder="Model" name="model" class="txtbox"><br><br>
+            <input type="text" placeholder="Colour" name="colour" class="txtbox"><br><br>
+            <input type="text" placeholder="Owner" name="owner" class="txtbox"><br><br>
+            <button style="height: 40px; width: 80px;">Submit</button>
+        </form>
+    </center>
+</body>
+
+</html>

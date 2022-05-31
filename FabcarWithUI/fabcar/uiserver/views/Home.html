@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FABCAR</title>
+
+    <style>
+
+        .bg {
+            background-color: rgb(244, 240, 255);
+        }
+    </style>
+
+    <script type="text/JavaScript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+    
+    </script>
+
+ 
+
+<body class="bg">
+    <center>
+        <h1>Hey <%= username%> , Welcome to HomeScreen..... </h1><br><br>
+        <h2>
+        <a href="/allcars"> View All Cars</a>
+        <br><br>
+        <a href="/createcar"> Insert a new car</a>
+        <br><br>
+        <a href="/query">Query a Car</a>
+        <br><br>
+        <a href="/changeowner">Change the Owner</a>
+        <br><br>
+        <a href="/logout">Logout</a>
+        </h2>
+    </center>
+</body>
+</head>
+
+</html>

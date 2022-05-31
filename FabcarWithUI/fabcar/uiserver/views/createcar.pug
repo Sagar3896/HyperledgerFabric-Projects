@@ -1,0 +1,38 @@
+doctype html
+html
+ head
+  title FABCAR
+  body
+   <center>
+   h1 Please Consider this as HomePage !!
+   a(href='/api/queryallcars')  <h4> View All Cars </h4>
+   
+   
+   a(href='/api/createcar')     <h4> Insert  a new car </h4>
+   br
+   
+   
+   form(method='POST' action='/api/addcar')
+    label()    
+    input(type='text', placeholder='Car ID' name='carid' height='25px')
+    br
+    br
+    label()  
+    input(type='text', placeholder='Make' name='make')
+    br
+    br
+    label()    
+    input(type='text', placeholder='Model' name='model')
+    br
+    br
+    label()    
+    input(type='text', placeholder='Colour' name='colour')
+    br
+    br
+    label()    
+    input(type='text', placeholder='Owner' name='owner')
+    br
+    br
+    
+    input(type='Submit' value='Submit')
+    <center>

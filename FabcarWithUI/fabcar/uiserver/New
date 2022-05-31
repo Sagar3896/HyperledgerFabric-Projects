@@ -1,0 +1,68 @@
+                // Check to see if we've already enrolled the admin user.
+                const adminIdentity = await wallet.get('admin');
+                if (!adminIdentity) {
+                        // console.log('An identity for the admin user "admin" does not exist in the wallet');
+                        // console.log('Run the enrollAdmin.js application before retrying');
+                        // return;
+
+                        res.send('An identity for the admin user "admin" does not exist in the wallet');
+                        res.send('Run the enrollAdmin.js application before retrying');
+
+                }
+
+                // build a user object for authenticating with the CA
+                const provider = wallet.getProviderRegistry().getProvider(adminIdentity.type);
+                const adminUser = await provider.getUserContext(adminIdentity, 'admin');
+
+                // Register the user, enroll the user, and import the new identity into the wallet.
+                const secret = await ca.register({
+                        affiliation: 'org1.department1',
+                        enrollmentID: input,
+                        role: 'client'
+                }, adminUser);
+                const enrollment = await ca.enroll({
+                        enrollmentID: input,
+                        enrollmentSecret: secret
+                });
+                const x509Identity = {
+                        credentials: {
+                                certificate: enrollment.certificate,
+                                privateKey: enrollment.key.toBytes(),
+                        },
+                        mspId: 'Org1MSP',
+                        type: 'X.509',
+                };
+                await wallet.put(input, x509Identity);
+
+
+//////QuerCar.html
+
+
+                <body>
+    <center>
+        <h1>Query Car Page -jflkafj;a;  </h1>
+        <!-- <a href="/api/queryallcars"> View All Cars</a> -->
+        <h3>
+            <a href="/home">Go to Home</a>
+            <br>
+            <a href="/logout"> Logout</a>
+            <a href="/logout"> Logout1</a>
+        </h3>
+        <br><br>
+       
+            <input type="text" placeholder="Enter Car ID to fetch details !!" id="carid" class="txtbox">
+            <br><br>
+
+            <center display:none;>
+                <h2>Details of Car :<br></h2>
+                <table id="myTable" border: 1px solid black; display : none;>
+                    <tr>
+                        <td>Key</td>
+                        <td>Data</td>
+                    </tr>
+                </table>
+            </center>
+
+    
+    </center>
+</body>

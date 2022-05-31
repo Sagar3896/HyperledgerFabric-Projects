@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page !!</title>
+
+    <style>
+        .txtbox {
+            border-radius: 25px;
+            padding: 20px;
+            width: 200px;
+            height: 10px;
+        }
+
+        .bg {
+            background-color: rgb(244, 240, 255);
+        }
+    </style>
+
+</head>
+
+
+
+     <script>
+        function idcreate() {
+            //var input = document.getElementById('uid').nodeValue.toString();
+            //document.write(input);
+            //alert(document.getElementById('uid').value);
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/api/checkuser" + document.getElementById('uid').value, false);
+            //xhttp.open("POST", "/api/user" + document.getElementById('uid').value, false);
+            //alert("step2");
+            xhttp.send();
+            //alert("step3");
+            var data = xhttp.responseText;
+            //alert(data);
+            //document.write("Details of Car :<br>");
+            document.write(data);
+            //alert(data);
+        }
+
+
+    </script> 
+
+
+<body class="bg">
+    <form>
+        <center><br><br><br><br>
+            <h1>Welcome to HomePage !!</h1>
+            <h2>Login with your ID</h2>
+            <br><br>
+            <input type="text" placeholder="User ID" id="uid" name="uid" class="txtbox" required>
+            <br><br>
+
+            <button style="height: 40px; width: 120px;" type="button" onclick="idcreate();">Login</button>
+        </center>
+    </form>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>FABCAR</title>
+
+<body>
+    <h1>First Page - Home</h1>
+   <a href="allcars"> View All Cars</a>
+   <br>
+   <a href="createcar"> Insert a new car</a>
+   <br>
+   <a href="enrolluser"> Enroll a User</a>
+</body>
+</head>
+
+</html> -->

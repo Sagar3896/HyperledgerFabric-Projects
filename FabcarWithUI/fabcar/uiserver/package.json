@@ -1,0 +1,57 @@
+{
+    "name": "fabcar",
+    "version": "1.0.0",
+    "description": "FabCar application implemented in JavaScript",
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "start": "concurrently \"npm run server\" \"cd ../client && npm start\"",
+        "server": "nodemon uiserver.js",
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "nyc mocha --recursive"
+    },
+    "engineStrict": true,
+    "author": "Hyperledger",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "body-parser": "^1.19.2",
+        "concurrently": "^7.2.1",
+        "cookie-parser": "^1.4.6",
+        "ejs": "^3.1.6",
+        "express": "^4.17.3",
+        "express-session": "^1.17.2",
+        "fabric-ca-client": "^2.2.4",
+        "fabric-network": "^2.2.4",
+        "html": "^1.0.0",
+        "pug": "^3.0.2",
+        "sessionstorage": "^0.1.0",
+        "sessionstorage-for-nodejs": "^1.0.2"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "eslint": "^5.9.0",
+        "mocha": "^9.2.2",
+        "nyc": "^14.1.1",
+        "sinon": "^7.1.1",
+        "sinon-chai": "^3.3.0"
+    },
+    "nyc": {
+        "exclude": [
+            "coverage/**",
+            "test/**"
+        ],
+        "reporter": [
+            "text-summary",
+            "html"
+        ],
+        "all": true,
+        "check-coverage": true,
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+    }
+}

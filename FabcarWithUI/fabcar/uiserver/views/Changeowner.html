@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FABCAR</title>
+
+    <style>
+        .txtbox {
+            border-radius: 25px;
+            padding: 20px;
+            width: 200px;
+            height: 10px;
+        }
+
+        table,
+        td {
+            border: 1px solid black;
+
+        }
+
+        .bg {
+            background-color: rgb(244, 240, 255);
+        }
+    </style>
+    <script>
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+
+
+    <script>
+
+        function tb() {           
+            document.getElementById("h1").style.visibility = "hidden";
+            document.getElementById("myTable").style.visibility = "hidden";
+        }
+
+        function ownerchange() {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/api/changeowner/" + document.getElementById('carid').value +"&"+ document.getElementById('name').value, false);
+            //xhttp.open("POST", "/api/changeowner?carid=nn&owner=NN", false);
+            xhttp.send();
+            var data = xhttp.responseText;
+            
+                document.getElementById("h1").style.visibility = "visible";
+                document.getElementById("myTable").style.visibility = "visible";
+
+               // alert(document.getElementById('carid').value);
+               //alert(data);
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = data.Key;
+                //cell2.innerHTML = JSON.stringify(myArr[i]);
+                cell2.innerHTML = data;
+                
+        }
+    </script>
+
+</head>
+
+<body onload="tb()" class="bg">
+
+    <center>
+        <h1>Hey <%= username%>, You can change the Owner using below form....</h1>
+        <!-- <a href="/api/queryallcars"> View All Cars</a> -->
+        <h2>
+            <a href="/home">Go to Home</a>
+            <br><br>
+            <a href="/logout">Logout</a>
+        </h2>
+        <br><br>
+        <input type="text" placeholder="Enter Car ID for which the Owner needs to changed...." id="carid" name="carid" class="txtbox" required>
+        <br><br>
+        <input type="text" placeholder="Enter the changed Owner Name" id="name" name="name" class="txtbox" required>
+        <br><br>
+        <button style="height: 40px; width: 80px;" onclick="ownerchange();">Submit</button>
+
+        <h2 id="h1">Please find below the updated record :<br></h2>
+        <table id="myTable">
+            <tr>
+                <td>Key</td>
+                <td>Data</td>
+            </tr>
+        </table>
+        
+
+
+</body>
+
+</html>
